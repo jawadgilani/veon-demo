@@ -6,7 +6,8 @@ public enum Grocery {
 	TYPE("type"),
 	QUANTITY("quantity"),
 	COUNT("count"),
-	PRICE("price");
+	PRICE("price"),
+	CODE("code");
 	
 	private String val;
 	
@@ -15,6 +16,11 @@ public enum Grocery {
 	}
 	
 	public String val() {
+		return this.val;
+	}
+	
+	@Override
+	public String toString() {
 		return this.val;
 	}
 }

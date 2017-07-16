@@ -4,10 +4,120 @@
   <artifactId>emporium</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
+  
+  <name>veon_transformations_jazz</name>
+
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<spark.version>2.1.1</spark.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.emporium</groupId>
+				<artifactId>emp-commons</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.spark</groupId>
+				<artifactId>spark-core_2.11</artifactId>
+				<version>${spark.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.spark</groupId>
+				<artifactId>spark-hive_2.11</artifactId>
+				<version>${spark.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter-api</artifactId>
+				<version>RELEASE</version>
+			</dependency>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>3.8.1</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>1.2.17</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+  
+
+  <scm>
+    <connection>scm:git:git@github.com:jawadgilani/veon_test.git</connection>
+    <developerConnection>scm:git:git@github.com:jawadgilani/veon_test.git</developerConnection>
+    <url>git@github.com:jawadgilani/veon_test.git</url>
+  </scm>
+  
+  
   <modules>
   	<module>garments</module>
   	<module>grocery</module>
   	<module>toys</module>
   	<module>emp-commons</module>
   </modules>
+  
+  <build>
+  <pluginManagement>
+  <plugins>
+  
+  <plugin>
+  
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-assembly-plugin</artifactId>
+  <version>2.4.1</version>
+  <configuration>
+  <appendAssemblyId>false</appendAssemblyId>
+  <descriptors>
+  <descriptor>custom-desc.xml</descriptor>
+  </descriptors>
+  
+  <archive>
+ <manifest>
+ <addClasspath>true</addClasspath>
+ <mainClass>com.emporium.grocery.GroceryMain</mainClass>
+ </manifest>
+  </archive>
+
+<executions>
+<execution>
+<id>make-assembly</id>
+<!-- bind to the packaging phase -->
+<phase>package</phase>
+<goals>
+<goal>single</goal>
+</goals>
+</execution>
+</executions>
+</configuration>
+
+  </plugin>
+  
+  <!-- Maven SCM Plugin -->
+  <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-scm-plugin</artifactId>
+        <version>1.9.5</version>
+        <configuration>
+          <connectionType>connection</connectionType>
+        </configuration>
+      </plugin>
+  
+  
+  </plugins>
+  
+  </pluginManagement>
+  
+  
+  </build>
 </project>
