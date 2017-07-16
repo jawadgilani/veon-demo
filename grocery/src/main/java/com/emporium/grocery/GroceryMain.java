@@ -5,7 +5,6 @@ package com.emporium.grocery;
 
 import com.emporium.mall.util.LogGenerator;
 import com.emporium.mall.util.UdfFuntions;
-import com.emporium.mall.util.attributes.Grocery;
 /**
  * @author sg186104
  *

@@ -1,11 +1,12 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.emporium</groupId>
-  <artifactId>emporium</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
-  
-  <name>veon_transformations_jazz</name>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.emporium</groupId>
+	<artifactId>emporium</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>emporium</name>
 
 	<url>http://maven.apache.org</url>
 
@@ -51,73 +52,104 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-  
 
-  <scm>
-    <connection>scm:git:git@github.com:jawadgilani/veon_test.git</connection>
-    <developerConnection>scm:git:git@github.com:jawadgilani/veon_test.git</developerConnection>
-    <url>git@github.com:jawadgilani/veon_test.git</url>
-  </scm>
-  
-  
-  <modules>
-  	<module>garments</module>
-  	<module>grocery</module>
-  	<module>toys</module>
-  	<module>emp-commons</module>
-  </modules>
-  
-  <build>
-  <pluginManagement>
-  <plugins>
-  
-  <plugin>
-  
-  <groupId>org.apache.maven.plugins</groupId>
-  <artifactId>maven-assembly-plugin</artifactId>
-  <version>2.4.1</version>
-  <configuration>
-  <appendAssemblyId>false</appendAssemblyId>
-  <descriptors>
-  <descriptor>custom-desc.xml</descriptor>
-  </descriptors>
-  
-  <archive>
- <manifest>
- <addClasspath>true</addClasspath>
- <mainClass>com.emporium.grocery.GroceryMain</mainClass>
- </manifest>
-  </archive>
 
-<executions>
-<execution>
-<id>make-assembly</id>
-<!-- bind to the packaging phase -->
-<phase>package</phase>
-<goals>
-<goal>single</goal>
-</goals>
-</execution>
-</executions>
-</configuration>
+	<scm>
+		<connection>scm:git:https://github.com/jawadgilani/scm-test.git</connection>
+		<developerConnection>scm:git:https://github.com/jawadgilani/scm-test.git</developerConnection>
+		<url>https://github.com/jawadgilani/scm-test</url>
+	</scm>
 
-  </plugin>
-  
-  <!-- Maven SCM Plugin -->
-  <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-scm-plugin</artifactId>
-        <version>1.9.5</version>
-        <configuration>
-          <connectionType>connection</connectionType>
-        </configuration>
-      </plugin>
-  
-  
-  </plugins>
-  
-  </pluginManagement>
-  
-  
-  </build>
+
+	<profiles>
+		<!-- run this profile when releasing the library -->
+		<profile>
+			<id>release</id>
+			<properties>
+				<message>Add version files to git</message>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-scm-plugin</artifactId>
+						<version>1.8.1</version>
+						<configuration>
+							<message>Add version files to git</message>
+							<systemProperties>
+								<systemProperty>
+									<name>message</name>
+									<value>[Add Version to git]</value>
+								</systemProperty>
+							</systemProperties>
+						</configuration>
+						<executions>
+							<execution>
+								<id>add-version-to-git</id>
+								<phase>package</phase>
+								<goals>
+									<goal>add</goal>
+									<goal>checkin</goal>
+									<goal>checkout</goal>
+								</goals>
+								<configuration>
+									<basedir>./</basedir>
+									<includes>versions/*</includes>
+									<message>[Add Version to git]</message>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+	<modules>
+		<module>garments</module>
+		<module>grocery</module>
+		<module>toys</module>
+		<module>emp-commons</module>
+	</modules>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+
+				<plugin>
+
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>2.4.1</version>
+					<configuration>
+						<appendAssemblyId>false</appendAssemblyId>
+						<descriptors>
+							<descriptor>custom-desc.xml</descriptor>
+						</descriptors>
+
+						<archive>
+							<manifest>
+								<addClasspath>true</addClasspath>
+								<mainClass>com.emporium.grocery.GroceryMain</mainClass>
+							</manifest>
+						</archive>
+
+						<executions>
+							<execution>
+								<id>make-assembly</id>
+								<!-- bind to the packaging phase -->
+								<phase>package</phase>
+								<goals>
+									<goal>single</goal>
+								</goals>
+							</execution>
+						</executions>
+					</configuration>
+
+				</plugin>
+			</plugins>
+
+		</pluginManagement>
+
+	</build>
 </project>
