@@ -10,6 +10,8 @@ public enum Toys {
 	PRICE("price"),
 	CODE("code");
 	
+	
+	
 	private String val;
 	
 	Toys(String val) {

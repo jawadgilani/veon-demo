@@ -10,6 +10,7 @@ public enum Garments {
 	PRICE("price"),
 	CODE("code");
 	
+	
 	private String val;
 	
 	Garments(String val) {

@@ -10,7 +10,7 @@ package com.emporium.mall.util;
 import org.apache.spark.sql.api.java.UDF3;
 
 /**
- * Created by ll186048 on 28/06/2017.
+ * Created by SG186104 on 28/06/2017.
  * <p>
  * Collection of utility UDFs
  */
@@ -26,15 +26,7 @@ public class UdfFuntions {
 		 */
 		private static final long serialVersionUID = 1L;
 
-		/**
-         * Derive location from DPI table data
-         *
-         * @param cgi
-         * @param sai
-         * @param ecgi
-         * @return
-         * @throws Exception
-         */
+		/
         public String call(String cgi, String sai, String ecgi) throws Exception {
             if (cgi != null && cgi.length() >= 14) {
 

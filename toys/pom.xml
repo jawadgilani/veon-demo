@@ -5,6 +5,8 @@
     <groupId>com.emporium</groupId>
     <artifactId>emporium</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    
+    
   </parent>
   <artifactId>toys</artifactId>
   <dependencies>

@@ -4,7 +4,7 @@
 package com.emporium.main.pkg;
 
 /**
- * @author sg186104
+ * @author sg186104  Jawad Gilani
  *
  */
 public class MainApp {

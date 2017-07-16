@@ -6,7 +6,7 @@ package com.emporium.grocery;
 import com.emporium.mall.util.LogGenerator;
 import com.emporium.mall.util.UdfFuntions;
 /**
- * @author sg186104
+ * @author sg186104 Jawad Gilani
  *
  */
 import static com.emporium.mall.util.attributes.Grocery.*;
@@ -50,6 +50,8 @@ public class GroceryMain {
             where = String.format("where %s", args[4]);
         }
 
+        
+        
         SparkSession spark = SparkSession
         		.builder()
                 .appName("Grocery Transformation")

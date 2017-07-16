@@ -18,6 +18,7 @@ public class ToysMain {
     
     public static void main(String[] args) {
     	        
+    	
     	Logger logger = LogGenerator.getLoggerInstance("Transformation");
     	logger.info("Test Log ...");
     	
